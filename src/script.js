@@ -5,6 +5,8 @@ import * as dat from "dat.gui";
 import ao_img from "/textures/door/ambientOcclusion.jpg";
 import color_img from "/textures/door/color.jpg";
 import displacement_img from "/textures/door/height.jpg";
+import metalness_img from "/textures/door/metalness.jpg";
+import roughness_img from "/textures/door/roughness.jpg";
 
 const scene = new THREE.Scene();
 //camera
@@ -28,13 +30,15 @@ const loader = new THREE.TextureLoader();
 const ao_loader = loader.load(ao_img);
 const color_loader = loader.load(color_img);
 const displacement_loader = loader.load(displacement_img);
-
+const metalness_loader = loader.load(metalness_img);
+const roughness_loader = loader.load(roughness_img);
 //material
 const material = new THREE.MeshStandardMaterial();
 material.aoMap = ao_loader;
 material.map = color_loader;
 material.displacementMap = displacement_loader;
-
+material.metalnessMap = metalness_loader;
+material.roughnessMap = roughness_loader;
 material.side = THREE.DoubleSide;
 // material.color = new THREE.Color("red");
 // material.wireframe = true;
@@ -70,6 +74,10 @@ torusGeometry.setAttribute(
 );
 
 //Gui
+material.metalness = 0;
+material.roughness = 1;
+material.aoMapIntensity = 0;
+material.displacementScale = 0.5;
 gui.add(material, "metalness").min(0).max(1).step(0.0001);
 gui.add(material, "roughness").min(0).max(1).step(0.0001);
 gui.add(material, "aoMapIntensity").min(0).max(10).step(0.0001);
@@ -84,11 +92,11 @@ document.body.appendChild(renderer.domElement);
 // Light setup
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // dimmer ambient
 scene.add(ambientLight);
-const pointLight = new THREE.PointLight(0xffffff, 1); // brightness = 1
-pointLight.position.set(1, 2, 3);
+const pointLight = new THREE.PointLight(0xffffff, 0.5); // brightness = 1
+pointLight.position.set(2, 2, 2);
 scene.add(pointLight);
 // light helper
-const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2);
+const pointLightHelper = new THREE.PointLightHelper(pointLight, 1);
 scene.add(pointLightHelper);
 
 window.addEventListener("resize", () => {
