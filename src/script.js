@@ -8,6 +8,7 @@ import displacement_img from "/textures/door/height.jpg";
 import metalness_img from "/textures/door/metalness.jpg";
 import roughness_img from "/textures/door/roughness.jpg";
 import normal_img from "/textures/door/normal.jpg";
+import alpha_img from "/textures/door/alpha.jpg";
 
 const scene = new THREE.Scene();
 //camera
@@ -34,6 +35,7 @@ const displacement_loader = loader.load(displacement_img);
 const metalness_loader = loader.load(metalness_img);
 const roughness_loader = loader.load(roughness_img);
 const normal_loader = loader.load(normal_img);
+const alpha_loader = loader.load(alpha_img);
 //material
 const material = new THREE.MeshStandardMaterial();
 material.aoMap = ao_loader;
@@ -43,6 +45,7 @@ material.metalnessMap = metalness_loader;
 material.roughnessMap = roughness_loader;
 material.normalMap = normal_loader;
 material.side = THREE.DoubleSide;
+material.alphaMap = alpha_loader;
 // material.color = new THREE.Color("red");
 // material.wireframe = true;
 material.opacity = 0.5;
