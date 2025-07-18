@@ -2,13 +2,13 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "dat.gui";
-import ao_img from "/textures/door/ambientOcclusion.jpg";
-import color_img from "/textures/door/color.jpg";
-import displacement_img from "/textures/door/height.jpg";
-import metalness_img from "/textures/door/metalness.jpg";
-import roughness_img from "/textures/door/roughness.jpg";
-import normal_img from "/textures/door/normal.jpg";
-import alpha_img from "/textures/door/alpha.jpg";
+import ao_img from "./textures/door/ambientOcclusion.jpg";
+import color_img from "./textures/door/color.jpg";
+import displacement_img from "./textures/door/height.jpg";
+import metalness_img from "./textures/door/metalness.jpg";
+import roughness_img from "./textures/door/roughness.jpg";
+import normal_img from "./textures/door/normal.jpg";
+import alpha_img from "./textures/door/alpha.jpg";
 
 const scene = new THREE.Scene();
 //camera
