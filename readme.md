@@ -44,6 +44,8 @@ Make sure you have [Node.js](https://nodejs.org/) installed. Then run:
 npm install
 ```
 
+---
+
 ### 2. 🧪 Run Development Server
 
 ```bash
