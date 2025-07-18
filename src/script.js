@@ -2,8 +2,9 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "dat.gui";
-import ao from "/textures/door/ambientOcclusion.jpg";
-import color from "/textures/door/color.jpg";
+import ao_img from "/textures/door/ambientOcclusion.jpg";
+import color_img from "/textures/door/color.jpg";
+import displacement_img from "/textures/door/height.jpg";
 
 const scene = new THREE.Scene();
 //camera
@@ -24,13 +25,15 @@ scene.add(axisHelper);
 const gui = new dat.GUI();
 //texture
 const loader = new THREE.TextureLoader();
-const ao_loader = loader.load(ao);
-const color_loader = loader.load(color);
+const ao_loader = loader.load(ao_img);
+const color_loader = loader.load(color_img);
+const displacement_loader = loader.load(displacement_img);
 
 //material
 const material = new THREE.MeshStandardMaterial();
 material.aoMap = ao_loader;
 material.map = color_loader;
+material.displacementMap = displacement_loader;
 
 material.side = THREE.DoubleSide;
 // material.color = new THREE.Color("red");
@@ -39,7 +42,7 @@ material.opacity = 0.5;
 material.transparent = true;
 //geometry
 const sphereGeometry = new THREE.SphereGeometry(2, 32, 16);
-const planeGeometry = new THREE.PlaneGeometry(5, 5);
+const planeGeometry = new THREE.PlaneGeometry(5, 5, 10, 10);
 const torusGeometry = new THREE.TorusGeometry(2, 0.5, 16, 100);
 // Mesh
 const sphereMesh = new THREE.Mesh(sphereGeometry, material);
@@ -70,6 +73,7 @@ torusGeometry.setAttribute(
 gui.add(material, "metalness").min(0).max(1).step(0.0001);
 gui.add(material, "roughness").min(0).max(1).step(0.0001);
 gui.add(material, "aoMapIntensity").min(0).max(10).step(0.0001);
+gui.add(material, "displacementScale").min(0).max(1).step(0.0001);
 //renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
