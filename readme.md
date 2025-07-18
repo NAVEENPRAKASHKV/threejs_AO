@@ -35,8 +35,6 @@ your-project/
 │ ├── index.js # Main Three.js logic
 │ ├── style.css # CSS styles
 │ ├── index.html # html
-│
-├──static
 │ └── textures
 │       └── door
 │           ├── ambientOcclusion.jpg
@@ -46,6 +44,8 @@ your-project/
 │           ├── roughness.jpg
 │           ├── normal.jpg
 │           └── alpha.jpg
+│
+├──static
 ├── dist/ # Built files (after bundling)
 ├── bundler/ # Webpack configuration files
 ├── package.json
