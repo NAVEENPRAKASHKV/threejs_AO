@@ -1,4 +1,4 @@
-# 🧪 Three.js Scene with Texture, AO Map, and GUI Controls
+## 🧪 Three.js Scene with Texture, AO Map, and GUI Controls
 
 This is a WebGL-powered 3D scene built using [Three.js](https://threejs.org/) and configured with basic lighting, orbit controls, GUI debugging tools, and texture mapping including **ambient occlusion**. It demonstrates how to use multiple geometries with shared material properties.
 
